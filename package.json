@@ -1,13 +1,16 @@
 {
   "name": "container-image-provenance-checker",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Verify image digests, provenance attestations and build source metadata.",
   "type": "module",
   "engines": {
     "node": ">=22"
   },
+  "bin": { "container-image-provenance-checker": "bin/container-image-provenance-checker.mjs" },
   "scripts": {
-    "test": "node --test"
+    "lint": "node --check src/index.mjs && node --check src/cli.mjs && node --check src/json-keys.mjs && node --check bin/container-image-provenance-checker.mjs",
+    "test": "node --test",
+    "check": "npm run lint && npm test"
   },
   "license": "MIT",
   "repository": {
