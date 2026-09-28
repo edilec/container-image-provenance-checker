@@ -35,3 +35,7 @@ Reports follow the v1 envelope with `status` pass/fail/incomplete, summary count
 Manifest ≤8 MiB; bundle ≤1 MiB; policy ≤64 KiB; signed payload ≤64 KiB; ≤20 attestations; JSON nesting depth ≤16; injected verification deadline 5 seconds. A bound breach is incomplete, not truncated. UTF-8 decoding is strict and duplicate JSON object keys, including escaped aliases, are rejected. CLI `now` and library `now` are injectable for deterministic deadline tests. The checker does not validate a registry's live tag-to-digest mapping, image layer bytes, source repository contents, CI identity, certificate chains, transparency logs, revocation, or builder provenance beyond the configured exact strings. The operator must independently establish that their policy key and expected values are trustworthy.
 
 Run `npm run check` for syntax and tests. No network is needed.
+
+## Production context
+
+This tool checks only the exported OCI manifest, signed bundle and trust policy supplied to it. It does not generate or verify SLSA/in-toto statements, discover registry evidence, or enforce a deployment gate. For the broader design of trusted builders, attestation distribution and deployment verification, see [Edilec's build provenance guide](https://edilec.com/blog/clodev-11035/build-provenance-attestations-delivery-workflow/).
